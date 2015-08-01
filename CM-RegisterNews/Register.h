@@ -16,6 +16,9 @@
 #define nMaxTxtData         50
 
 @interface Register : UIViewController
+
+@property (strong, nonatomic) NSMutableArray   *maUITextForm;
+
 @property (strong, nonatomic) IBOutlet UITextField *txtName;
 @property (strong, nonatomic) IBOutlet UITextField *txtFirstSurname;
 @property (strong, nonatomic) IBOutlet UITextField *txtSecondSurname;
@@ -29,12 +32,20 @@
 @property (strong, nonatomic) IBOutlet UIView *vDataGroup4;
 @property (strong, nonatomic) IBOutlet UIScrollView *svRegister;
 @property (strong, nonatomic) IBOutlet UITextField *txtDate;
-
+@property (strong, nonatomic) IBOutlet UIDatePicker *dpDateBirthPicker;
+@property (strong, nonatomic) IBOutlet UIButton *btnDatePickerOutlet;
+@property (strong, nonatomic) IBOutlet UILabel *lblErrorMessage;
 
 - (IBAction)btnNextPressed:(id)sender;
 
 - (IBAction)btnMenuPressed:(id)sender;
 - (IBAction)btnGooglePressed:(id)sender;
 - (IBAction)btnFacebookPressed:(id)sender;
+- (IBAction)btnDateBirthPickerShow:(id)sender;
+- (IBAction)selectDateAction:(id)sender;
+
+//Custom methods
+- (void)showDatePicker:(UIDatePicker *)datePicker;
+- (void)hideDatePicker:(UIDatePicker *)datePicker;
 
 @end

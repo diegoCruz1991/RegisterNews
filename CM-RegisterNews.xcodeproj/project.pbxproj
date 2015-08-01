@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		084DD76F1B6C855200571347 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DD76E1B6C855200571347 /* Home.m */; };
 		D1C17A421B63D54C00E3134B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C17A411B63D54C00E3134B /* main.m */; };
 		D1C17A451B63D54C00E3134B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C17A441B63D54C00E3134B /* AppDelegate.m */; };
 		D1C17A481B63D54C00E3134B /* CM_RegisterNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1C17A461B63D54C00E3134B /* CM_RegisterNews.xcdatamodeld */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		084DD76D1B6C855200571347 /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
+		084DD76E1B6C855200571347 /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
 		D1C17A3C1B63D54C00E3134B /* CM-RegisterNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CM-RegisterNews.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C17A401B63D54C00E3134B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1C17A411B63D54C00E3134B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				D1C17A4A1B63D54C00E3134B /* Start.m */,
 				D1C17A6D1B63EA5100E3134B /* Register.h */,
 				D1C17A6E1B63EA5100E3134B /* Register.m */,
+				084DD76D1B6C855200571347 /* Home.h */,
+				084DD76E1B6C855200571347 /* Home.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			files = (
 				D1C17A451B63D54C00E3134B /* AppDelegate.m in Sources */,
 				D1C17A481B63D54C00E3134B /* CM_RegisterNews.xcdatamodeld in Sources */,
+				084DD76F1B6C855200571347 /* Home.m in Sources */,
 				D1C17A4B1B63D54C00E3134B /* Start.m in Sources */,
 				D1C17A6F1B63EA5100E3134B /* Register.m in Sources */,
 				D1C17A421B63D54C00E3134B /* main.m in Sources */,
@@ -486,6 +492,7 @@
 				D1C17A641B63D54C00E3134B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D1C17A651B63D54D00E3134B /* Build configuration list for PBXNativeTarget "CM-RegisterNewsTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +501,7 @@
 				D1C17A671B63D54D00E3134B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

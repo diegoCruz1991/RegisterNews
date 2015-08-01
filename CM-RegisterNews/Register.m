@@ -30,13 +30,37 @@ static int iKeyboardHeight = 100;
 }
 
 - (void)initController {
+    self.maUITextForm = [[NSMutableArray alloc] initWithObjects: self.txtDate, self.txtEmail,
+                         self.txtFirstSurname,
+                         self.txtName,
+                         self.txtPassword,
+                         self.txtPasswordConfirm,
+                         self.txtPhone,
+                         self.txtSecondSurname, nil];
+
+    
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    self.dpDateBirthPicker.maximumDate = [NSDate date];
 }
 /**********************************************************************************************/
 #pragma mark - Action methods methods
 /**********************************************************************************************/
 - (IBAction)btnNextPressed:(id)sender {
+    [self.svRegister setContentOffset: CGPointMake(0, self.vDataGroup1.frame.origin.y + 20)  animated:YES];
+    
+    self.lblErrorMessage.text = @"";
+    
+    NSMutableArray* formWithErrors = [self isFormHasEmptyField];
+    if ([formWithErrors count] == 0) {
+        if ([self isSuccessPassword]) {
+            Register *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"Home"];
+            [self presentViewController:vc animated:YES completion:nil];
+        }
+    }else {
+        [self markEmptyTextField: formWithErrors];
+    }
 }
 
 - (IBAction)btnMenuPressed:(id)sender {
@@ -46,6 +70,20 @@ static int iKeyboardHeight = 100;
 }
 
 - (IBAction)btnFacebookPressed:(id)sender {
+}
+
+- (IBAction)btnDateBirthPickerShow:(id)sender {
+    self.txtDate.backgroundColor = [UIColor whiteColor];
+    
+    [self showDatePicker: self.dpDateBirthPicker];
+}
+
+- (IBAction)selectDateAction:(id)sender {
+    NSDate *myDate                  = self.dpDateBirthPicker.date;
+    NSDateFormatter *dateFormat     = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd/MM/YY"];
+    NSString *stDate                = [dateFormat stringFromDate:myDate];
+    self.txtDate.text = stDate;
 }
 /**********************************************************************************************/
 #pragma mark - Text fields delegates
@@ -65,6 +103,11 @@ static int iKeyboardHeight = 100;
 //-------------------------------------------------------------------------------
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     print(NSLog(@"textFieldDidBeginEditing"))
+    
+    textField.backgroundColor = [UIColor whiteColor];
+    
+    [self hideDatePicker: self.dpDateBirthPicker];
+    
     if (textField == self.txtName) {
         [self.svRegister setContentOffset: CGPointMake(0, self.vDataGroup1.frame.origin.y + 20)  animated:YES];
     }
@@ -120,6 +163,63 @@ static int iKeyboardHeight = 100;
     CGSize keyboardSize     = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     iKeyboardHeight         = MIN(keyboardSize.height,keyboardSize.width);
     self.svRegister.contentSize = CGSizeMake(self.svRegister.frame.size.width, self.svRegister.frame.size.height + iKeyboardHeight + 40);
+}
+
+/**********************************************************************************************/
+#pragma mark - self custom methods
+/**********************************************************************************************/
+- (BOOL)isTextFieldEmpty:(UITextField *)textField {
+    if ([textField.text isEqual:@""] == TRUE) {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSMutableArray *)isFormHasEmptyField {
+    NSMutableArray *tempArrayWithErrors = [[NSMutableArray alloc] initWithObjects: nil];
+    NSPredicate* uiTextPredicate = [NSPredicate predicateWithFormat:@"SELF.class == %@", [UITextField class]];
+    [self.maUITextForm filteredArrayUsingPredicate:uiTextPredicate];
+    for (UITextField* textField in self.maUITextForm){
+        if ([self isTextFieldEmpty: textField]) {
+            [tempArrayWithErrors addObject: textField];
+            self.lblErrorMessage.text = @"Hay campos vacios \n";
+        }
+    }
+    self.lblErrorMessage.adjustsFontSizeToFitWidth = YES;
+    return tempArrayWithErrors;
+}
+
+- (void)markEmptyTextField:(NSMutableArray*)arrayWithTextField {
+    NSPredicate* uiTextPredicate = [NSPredicate predicateWithFormat:@"SELF.class == %@", [UITextField class]];
+    [arrayWithTextField filteredArrayUsingPredicate:uiTextPredicate];
+    for (UITextField* textField in arrayWithTextField){
+        textField.backgroundColor = [UIColor redColor];
+    }
+}
+
+- (BOOL)isSuccessPassword {
+    if (![self isTextFieldEmpty: self.txtPassword] && ![self isTextFieldEmpty: self.txtPasswordConfirm]) {
+        if([self.txtPassword.text isEqualToString:self.txtPasswordConfirm.text]) {
+            return YES;
+        }
+        self.lblErrorMessage.text = [self.lblErrorMessage.text stringByAppendingString:@"El password no es identico"];
+        self.lblErrorMessage.adjustsFontSizeToFitWidth = YES;
+    }
+    return NO;
+}
+
+/**********************************************************************************************/
+#pragma mark - UIDatePicker custom methods
+/**********************************************************************************************/
+
+- (void)showDatePicker:(UIDatePicker *)datePicker {
+    [self.svRegister setContentOffset: CGPointMake(0, self.vDataGroup1.frame.origin.y + 20)  animated:YES];
+    self.dpDateBirthPicker.hidden = NO;
+}
+
+- (void)hideDatePicker:(UIDatePicker *)datePicker {
+    [self.svRegister setContentOffset: CGPointMake(0, self.vDataGroup1.frame.origin.y - 20)  animated:YES];
+    self.dpDateBirthPicker.hidden = YES;
 }
 
 @end
