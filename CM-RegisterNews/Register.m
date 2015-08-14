@@ -7,6 +7,8 @@
 //
 
 #import "Register.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 static UIStoryboard    *storyboard;
 static int iKeyboardHeight = 100;
@@ -41,6 +43,10 @@ static int iKeyboardHeight = 100;
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    loginButton.center = self.view.center;
+    [self.view addSubview:loginButton];
     
     self.dpDateBirthPicker.maximumDate = [NSDate date];
 }
@@ -220,6 +226,19 @@ static int iKeyboardHeight = 100;
 - (void)hideDatePicker:(UIDatePicker *)datePicker {
     [self.svRegister setContentOffset: CGPointMake(0, self.vDataGroup1.frame.origin.y - 20)  animated:YES];
     self.dpDateBirthPicker.hidden = YES;
+}
+
+/**********************************************************************************************/
+#pragma mark - Facebook delegate methods
+/**********************************************************************************************/
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 @end

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		084DD76F1B6C855200571347 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 084DD76E1B6C855200571347 /* Home.m */; };
+		08C72D1D1B6D1D2700A465D4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C72D1A1B6D1D2700A465D4 /* FBSDKCoreKit.framework */; };
+		08C72D1E1B6D1D2700A465D4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C72D1B1B6D1D2700A465D4 /* FBSDKLoginKit.framework */; };
+		08C72D1F1B6D1D2700A465D4 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C72D1C1B6D1D2700A465D4 /* FBSDKShareKit.framework */; };
 		D1C17A421B63D54C00E3134B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C17A411B63D54C00E3134B /* main.m */; };
 		D1C17A451B63D54C00E3134B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C17A441B63D54C00E3134B /* AppDelegate.m */; };
 		D1C17A481B63D54C00E3134B /* CM_RegisterNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1C17A461B63D54C00E3134B /* CM_RegisterNews.xcdatamodeld */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		084DD76D1B6C855200571347 /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
 		084DD76E1B6C855200571347 /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
+		08C72D1A1B6D1D2700A465D4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		08C72D1B1B6D1D2700A465D4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		08C72D1C1B6D1D2700A465D4 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		D1C17A3C1B63D54C00E3134B /* CM-RegisterNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CM-RegisterNews.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C17A401B63D54C00E3134B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1C17A411B63D54C00E3134B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C72D1E1B6D1D2700A465D4 /* FBSDKLoginKit.framework in Frameworks */,
+				08C72D1D1B6D1D2700A465D4 /* FBSDKCoreKit.framework in Frameworks */,
+				08C72D1F1B6D1D2700A465D4 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,9 @@
 		D1C17A331B63D54C00E3134B = {
 			isa = PBXGroup;
 			children = (
+				08C72D1A1B6D1D2700A465D4 /* FBSDKCoreKit.framework */,
+				08C72D1B1B6D1D2700A465D4 /* FBSDKLoginKit.framework */,
+				08C72D1C1B6D1D2700A465D4 /* FBSDKShareKit.framework */,
 				D1C17A3E1B63D54C00E3134B /* CM-RegisterNews */,
 				D1C17A5B1B63D54C00E3134B /* CM-RegisterNewsTests */,
 				D1C17A3D1B63D54C00E3134B /* Products */,
@@ -423,6 +435,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+					/Users/DiegoCruz/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = "CM-RegisterNews/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -433,6 +450,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+					/Users/DiegoCruz/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = "CM-RegisterNews/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

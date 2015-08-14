@@ -1,0 +1,22 @@
+Doble click en Main Storyboard
+
+View -> Utilities -> Show File Inspector
+
+Y luego seleccionas el View Controller y deseleccionas el checkbox Use Auto Layout
+
+
+Para cambiar de nombre abir el archivo en el nombre de la clase lo subrayas
+click derecho, refactor, rename
+
+View - Standard View para ver la vista
+	 - Assitant View Para ligar botones a codigo
+
+Accion recomendada para el boton Touch up inside
+
+Agregar imagenes  a una carpeta dentro del projecto imgs
+click derechi y add files to project y  seleccionas la carpeta que creaste y que este seleccionado crear grupos
+- Agregar un elemento imagen al view que se vea bonito
+conectar la imagen con el codigo como outlet 
+y luego en start.m crear un nuevo arreglo con los nombres de las imagenes
+
+para llamar es self.imgUser.image = [UIImage imagesNamed:array[iIndex]];
